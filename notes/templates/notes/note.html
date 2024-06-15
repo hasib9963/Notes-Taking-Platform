@@ -1,0 +1,25 @@
+{% extends "notes/base.html" %}
+
+{% block page_header %}
+    <h1>{{note.title}}</h1>
+{% endblock page_header %}
+
+{% block content %}
+    <p>
+        <a href="{% url 'notes:note.id %'}">Add New Entry</a>
+    </p>
+
+    <ul>
+        {% for entry in note.entry_set.all %}
+            <div class="card mb-3">
+                <h4 class="card-header">
+                    <a href="{% url 'notes:note %'}">Update Entry</a>
+                </h4>
+                <div class="card-body">
+                    {{entry|linebreaks}}
+                </div>
+            </div>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}
